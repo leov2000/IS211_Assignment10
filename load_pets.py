@@ -1,7 +1,5 @@
 import sqlite3
 
-conn = sqlite3.connect('pets.db')
-
 def create_tables():
 
     sql_table = """
@@ -53,7 +51,6 @@ def insert_data():
     (5, 'Rufus', 'Cocker Spaniel', 1, 0),
     (6, 'Spot', 'Bloodhound', 2, 1);
 
-
     INSERT INTO person_pet 
     (person_id, pet_id)
     VALUES
@@ -68,6 +65,7 @@ def insert_data():
     return sql_insert
 
 def load_data():
+    conn = sqlite3.connect('pets.db')
     conn.executescript(create_tables())
     conn.executescript(insert_data())
     conn.commit()

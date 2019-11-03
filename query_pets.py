@@ -21,10 +21,10 @@ def query_db():
     JOIN pet ON person_pet.pet_id = pet.id;
     """
     cursor.executescript(sql_query)
-    print(cursor)
+    print(cursor.fetchall())
     conn.close()
 
-    return cursor
+    # return cursor.fetchall()
 
 
 def safe_int_checker(int_str):
