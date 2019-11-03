@@ -51,7 +51,6 @@ VALUES
 (1, 'Abbey Road', 2),
 (2, 'In the Wee Small Hours', 1);
 
-
 INSERT INTO songs 
 (song_id, song_name, track_number, song_length, album_id)
 VALUES
