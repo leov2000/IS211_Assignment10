@@ -59,8 +59,11 @@ VALUES
 (4, 6);
 """
 
-if __name__ == '__main__':
+def load_data():
     conn.executescript(sql_load)
     conn.executescript(sql_insert)
     conn.commit()
     conn.close()
+
+if __name__ == '__main__':
+    load_data()
