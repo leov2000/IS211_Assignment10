@@ -68,7 +68,6 @@ def insert_data():
     return sql_insert
 
 def load_data():
-    create_tables()
     conn.executescript(create_tables())
     conn.executescript(insert_data())
     conn.commit()
