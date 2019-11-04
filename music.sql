@@ -28,4 +28,3 @@ CREATE TABLE songs (
     song_length INT NOT NULL,
     album_id INT NOT NULL
 );
-
