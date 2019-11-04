@@ -2,6 +2,14 @@ import logging
 import sqlite3
 
 def query_db():
+    """
+    A function that uses a preconstructed query to retrieve data from a SQLite DB iinstance.
+
+    Parameters: None
+
+    Returns: A list of results
+    """"
+
     conn = sqlite3.connect('pets.db')
     cursor = conn.cursor()
     
@@ -28,19 +36,60 @@ def query_db():
     return [header, query_result]
 
 def value_getter(dict, key, tup):
+    """
+    A simple key/value getter.
+
+    Parameters: 
+        dict(dict)
+        key(str)
+        tup(tuple)
+
+    Returns: An integer.
+    """"
+
     index = dict[key]
 
     return tup[index]
 
 def print_person_info(tup_info):
+    """
+    A print function that prints the persons name and age.
+
+    Parameters:
+        tup_info(tuple)
+
+    Prints: the person info 
+    """"
+
     (name, age) = tup_info
 
     print(f"{name}, {age} years old")
 
 def print_pet_owner_details(owner, pet_details):
+    """
+    A print function that prints the owner and the pet details.
+
+    Parameters:
+        owner:(str)
+        pet_details:(str)
+
+    Prints: owner and pet details.
+    """"
+
     print(f"{owner} {pet_details}")
 
 def print_results(query_result, key_dict):
+    """
+    The main print function that triggers printing results.
+
+    Parameters:
+        query_result(list)
+        key_dict(dict)
+
+    Prints:
+        Calls print_person_info and print_pet_owner_details
+    """"
+
     head = query_result[0]
 
     person_name = f"{value_getter(key_dict, 'PersonFirst', head)} {value_getter(key_dict, 'PersonLast', head)}"
@@ -54,6 +103,18 @@ def print_results(query_result, key_dict):
         print_pet_owner_details(person_name, pet_info)
     
 def find_person(query_results, keys_dict, user_input):
+    """
+    A function that loops over the query_results and filters the list with the personId 
+    keyed in by the query user. 
+
+    Parameters:
+        query_results(list)
+        keys_dict(dict)
+        user_input(int)
+
+    Returns: A filtered list.
+    """"
+
     person_id = keys_dict['PersonID']
     filtered_list = filter(lambda x: x[person_id] == user_input, query_results)
 
@@ -61,6 +122,16 @@ def find_person(query_results, keys_dict, user_input):
     
 
 def get_keys(header_list):
+    """
+    A utility function that creates an index dictionary for key/value lookup.
+
+    Parameters:
+        header_list(list)
+
+    Returns: A dict with header keys as the keys and integer values denoting the index value 
+    within the result list.
+    """"
+
     config_fields = [
         'PersonFirst',
         'PersonLast',
@@ -79,8 +150,10 @@ def get_keys(header_list):
 def safe_int_checker(int_str):
     """
     A function that checks if the string is actually an int. used for the CLI.
+
     Parameters:
         int_str(str): A string representing an int.
+
     Returns:
         A tuple with a boolean as the first item and a value if its successfuly cast or None if it isnt.
     """
@@ -92,6 +165,14 @@ def safe_int_checker(int_str):
         return (False, None)
 
 def print_error(num):
+    """
+    A print function that prints out an error when a user keys in a non numerical key. 
+
+    Parameters:
+        num(int)
+
+    Prints: An error message and logs the userinput key.
+    """"
     print(f'Sorry the personId of {num} does not exist')
     logging.error(f'Error processing <{num}>')
 
