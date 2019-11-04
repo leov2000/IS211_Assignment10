@@ -52,14 +52,7 @@ def print_results(query_result, key_dict):
         pet_info = f"owned {value_getter(key_dict, 'PetName', pet)}, a {value_getter(key_dict, 'PetBreed', pet)}, that was {value_getter(key_dict, 'PetAge', pet)} years old."
 
         print_pet_owner_details(person_name, pet_info)
-
-# i. Print out data on the person (e.g. James Smith, 41 years old)
-# ii. Print out all the data on that person’s pets (e.g., James Smith owned Rusty, a
-# dalmatian, that was 4 years old)
-
-# [('James', 'Smith', 41, 'Rusty', 'Dalmation', 4, 1, 1, 1), ('James', 'Smith', 41, 'Bella', 'Alaskan Malamute', 3, 0, 1, 2)] 
     
-
 def find_person(query_results, keys_dict, user_input):
     person_id = keys_dict['PersonID']
     filtered_list = filter(lambda x: x[person_id] == user_input, query_results)
