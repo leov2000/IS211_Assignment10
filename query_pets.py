@@ -193,7 +193,7 @@ def main():
     CLI = True 
 
     while CLI:
-        keyed = input('\nPlease enter in a numerical ID\n')
+        keyed = input('\nPlease enter a numerical ID\n')
         (is_int, cast_num) = safe_int_checker(keyed)
 
         if is_int and cast_num > -1 :
@@ -210,7 +210,7 @@ def main():
 
         else:
             CLI = False
-            print('Terminal Exiting....')
+            print('CLI Exiting....')
             SystemExit
 
 if __name__ == '__main__':

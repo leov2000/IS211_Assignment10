@@ -88,8 +88,8 @@ def query_data():
     query_result = cursor.fetchall()
     expected_result = expected_query_result()
 
-    print("The database results match the expected results" if query_result == expected_result else "The results dont match.")
-    print("Printing out of cursor results....")
+    print("The database results match the expected results." if query_result == expected_result else "The results dont match.")
+    print("Printing results....")
 
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(query_result)
