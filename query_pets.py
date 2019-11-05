@@ -8,7 +8,7 @@ def query_db():
     Parameters: None
 
     Returns: A list of results
-    """"
+    """
 
     conn = sqlite3.connect('pets.db')
     cursor = conn.cursor()
@@ -45,7 +45,7 @@ def value_getter(dict, key, tup):
         tup(tuple)
 
     Returns: An integer.
-    """"
+    """
 
     index = dict[key]
 
@@ -59,7 +59,7 @@ def print_person_info(tup_info):
         tup_info(tuple)
 
     Prints: the person info 
-    """"
+    """
 
     (name, age) = tup_info
 
@@ -74,7 +74,7 @@ def print_pet_owner_details(owner, pet_details):
         pet_details:(str)
 
     Prints: owner and pet details.
-    """"
+    """
 
     print(f"{owner} {pet_details}")
 
@@ -88,7 +88,7 @@ def print_results(query_result, key_dict):
 
     Prints:
         Calls print_person_info and print_pet_owner_details
-    """"
+    """
 
     head = query_result[0]
 
@@ -113,7 +113,7 @@ def find_person(query_results, keys_dict, user_input):
         user_input(int)
 
     Returns: A filtered list.
-    """"
+    """
 
     person_id = keys_dict['PersonID']
     filtered_list = filter(lambda x: x[person_id] == user_input, query_results)
@@ -130,7 +130,7 @@ def get_keys(header_list):
 
     Returns: A dict with header keys as the keys and integer values denoting the index value 
     within the result list.
-    """"
+    """
 
     config_fields = [
         'PersonFirst',
@@ -172,7 +172,8 @@ def print_error(num):
         num(int)
 
     Prints: An error message and logs the userinput key.
-    """"
+    """
+    
     print(f'Sorry the personId of {num} does not exist')
     logging.error(f'Error processing <{num}>')
 
